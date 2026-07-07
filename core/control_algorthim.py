@@ -13,7 +13,7 @@ class PIDController:
         error = target - measurement
 
         self.integral_error += error * self.dt
-        self.integral_error = self.clamp(self.integral_error, -self.max_integral_error, self.max_integral_error)
+        self.integral_error = self.clamp(self.integral_error, self.max_integral_error, -self.max_integral_error)
 
         derivative_error = (error - self.previous_error) / self.dt
         self.previous_error = error
@@ -21,5 +21,5 @@ class PIDController:
         return (self.kp * error) + (self.ki * self.integral_error) + (self.kd * derivative_error)
     
     @staticmethod
-    def clamp(self, value: float, max_value: float, min_value: float = 0.0) -> float:
+    def clamp(value: float, max_value: float, min_value: float = 0.0) -> float:
         return max(min(value, max_value), min_value)
