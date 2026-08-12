@@ -11,7 +11,7 @@ This lab exist for some reasons I find absolutely intresting and actually needed
 ## Projects
 These are the projects contained in this lab, new projects are added frequently and are listed here by order;
 
-1. No project here, check back later
+1. **[1D Suspended Beam Drone](./simulations/1d_suspended_beam_drone/README.md)**: Drone stabilisation and target achievement using PID and LQR control systems under varying wind conditions - using real world wind data.
 
 
 ## Contributions
