@@ -6,6 +6,8 @@ from dataclasses import dataclass
 
 from .model import Model
 
+import random
+
 
 @dataclass(slots=True)
 class ControlMix:
@@ -83,8 +85,8 @@ class DualRotorBeamDroneModel:
         return max(min(thrust, self.max_motor_thrust), self.min_motor_thrust)
 
     def calculate_motor_thrusts(self, pid_output: float) -> ControlMix:
-        left_demand = self.motor_base_thrust - pid_output
-        right_demand = self.motor_base_thrust + pid_output
+        left_demand = self.motor_base_thrust + pid_output
+        right_demand = self.motor_base_thrust - pid_output
 
         left_motor_thrust = self._clamp_thrust(left_demand)
         right_motor_thrust = self._clamp_thrust(right_demand)
@@ -112,9 +114,12 @@ class DualRotorBeamDroneModel:
         dt: float,
     ) -> tuple[float, float, float, ControlMix]:
         control = self.calculate_motor_thrusts(pid_output)
-        angular_acc = (control.net_torque - self.angular_damping * angular_velocity) / self.inertia
+        angular_acc = self.angular_acceleration(pid_output, angular_velocity)
 
         next_angular_velocity = angular_velocity + angular_acc * dt
         next_angle = angle + next_angular_velocity * dt
 
         return next_angle, next_angular_velocity, angular_acc, control
+
+    def get_current_angle(self, angle: float) -> float:
+        return angle + random.gauss(0, 0.001)  # Add small noise to simulate sensor reading
