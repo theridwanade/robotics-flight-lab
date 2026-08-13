@@ -1,5 +1,5 @@
 class PIDController:
-    def __init__(self, max_integral_error=0.0, dt=0.01, kp=0.0, ki=0.0, kd=0.0):
+    def __init__(self, max_integral_error=10.0, dt=0.01, kp=0.0, ki=0.0, kd=0.0):
         self.kp = kp
         self.ki = ki
         self.kd = kd
@@ -13,10 +13,15 @@ class PIDController:
         error = setpoint - measured_value
 
         self.integral_error += error * self.dt
-        self.integral_error = max(min(self.integral_error, -self.max_integral_error), self.max_integral_error)
+        self.integral_error = max(-self.max_integral_error, min(self.integral_error, self.max_integral_error))
 
-        derivative_error = (error - self.previous_error) / self.dt
+        derivative_error = (error - self.previous_error) / self.dt if self.dt > 0 else 0.0
         self.previous_error = error
 
         output = (self.kp * error) + (self.ki * self.integral_error) + (self.kd * derivative_error)
         return output
+
+    def reset(self):
+        """Reset internal memory states for new simulation runs."""
+        self.integral_error = 0.0
+        self.previous_error = 0.0
