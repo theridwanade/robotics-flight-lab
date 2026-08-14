@@ -1,13 +1,22 @@
 import math
-from dataclasses import dataclass
-
+from typing import Optional
 from .base_sensor import BaseSensor
 
-@dataclass
+
 class AngleSensor(BaseSensor):
     """Angle sensor that can wrap angles and apply a low-pass filter (LPF)."""
-    wrap: bool = True
-    lpf_alpha: float = 0.0  # 0=no filter, in (0,1] for EMA
+    def __init__(
+            self,
+            bias: float = 0.0,
+            noise_std: float = 0.0,
+            seed: Optional[int] = None,
+            wrap: bool = True,
+            lpf_alpha: float = 0.0,
+    ):
+        super().__init__(name="AngleSensor", noise_std=noise_std, bias=bias, seed=seed)
+        self.wrap = wrap
+        self.lpf_alpha = lpf_alpha
+
 
     def wrap_angle(self, a: float) -> float:
         """Wrap angle to [-pi, pi] [-180, 180] degrees."""

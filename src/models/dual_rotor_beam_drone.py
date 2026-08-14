@@ -81,14 +81,20 @@ class DualRotorBeamDrone(BaseModel):
 
     def step(
             self, 
-            angle: float, 
-            angular_velocity: float, 
             pid_output: float, 
             v_wind_left: float = 0.0, 
             v_wind_right: float = 0.0, 
+            angle: float = None, 
+            angular_velocity: float = None, 
             dt: float = None): 
         if dt is None:
             dt = self.dt
+
+        if angular_velocity is None:
+            angular_velocity = self.state.angular_velocity
+
+        if angle is None:
+            angle = self.state.angle
 
         control_mix = self.compute_motor_thrusts(pid_output)
         wind_mix = self.compute_wind_torque(v_wind_left, v_wind_right)
