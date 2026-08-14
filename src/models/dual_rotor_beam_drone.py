@@ -1,5 +1,5 @@
-from models.base import BaseModel
 from dataclasses import dataclass
+from models.base import BaseModel
 
 @dataclass(slots=True)
 class ControlMix:
