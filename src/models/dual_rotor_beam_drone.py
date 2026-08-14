@@ -1,6 +1,6 @@
 from dataclasses import dataclass
 from typing import Optional
-from models.base import BaseModel
+from .base import BaseModel
 import numpy as np
 
 @dataclass(slots=True)

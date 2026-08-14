@@ -1,7 +1,7 @@
 import math
 from dataclasses import dataclass
 
-from base_sensor import BaseSensor
+from .base_sensor import BaseSensor
 
 @dataclass
 class AngleSensor(BaseSensor):
