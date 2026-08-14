@@ -26,6 +26,7 @@ class BaseModel:
         self.dt = dt
 
         # State of the model
+        self.time: float = 0.0
         self.state = State()
 
         #Other optional metadat that may be provided and useful for the model

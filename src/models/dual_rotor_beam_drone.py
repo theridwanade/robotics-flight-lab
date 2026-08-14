@@ -28,7 +28,6 @@ class DualRotorBeamDrone(BaseModel):
         self.angular_damping = 0.0
 
         self.arms_length = self.length / 2.0
-        self.time = 0.0
         # TODO: Write physics module for inertia calculation
         self.inertia = (1 / 12) * self.mass * (self.length ** 2)
 
