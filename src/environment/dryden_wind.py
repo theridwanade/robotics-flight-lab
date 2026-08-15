@@ -32,11 +32,11 @@ class DrydenWindGenerator:
             np.random.seed(seed)
 
         white_noise = np.random.normal(0.0, 1.0 / np.sqrt(self.dt), size=(num_steps, channels))
-        turbulence = lfilter(self.b_disc, self.a_disc, white_noise, axis=1)
+        turbulence = lfilter(self.b_disc, self.a_disc, white_noise, axis=0)
         wind_velocities = turbulence + self.config.mean_velocity
 
         if channels == 1:
-            return wind_velocities[0]
+            return wind_velocities[:, 0]
         
         return wind_velocities
 

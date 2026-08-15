@@ -15,6 +15,14 @@ class WindMix:
     right_drag: float
     wind_torque: float
 
+@dataclass(slots=True)
+class StepResult:
+    next_angle: float
+    next_angular_velocity: float
+    angular_acceleration: float
+    control_mix: ControlMix
+    wind_mix: WindMix
+
 
 class DualRotorBeamDrone(BaseModel):
     def __init__(
@@ -73,8 +81,8 @@ class DualRotorBeamDrone(BaseModel):
         cd = self.drag_coefficient
         area = self.surface_area
 
-        f_left = 0.5 * rho * cd  * area * (v_wind_left ** 2) * np.sign(v_wind_left)
-        f_right = 0.5 * rho * cd * area * (v_wind_right ** 2) * np.sign(v_wind_right)
+        f_left = -0.5 * rho * cd  * area * (v_wind_left ** 2) * np.sign(v_wind_left)
+        f_right = -0.5 * rho * cd * area * (v_wind_right ** 2) * np.sign(v_wind_right)
 
         wind_torque = (f_left - f_right) * self.arms_length
         return WindMix(left_drag=f_left, right_drag=f_right, wind_torque=wind_torque)
@@ -86,7 +94,7 @@ class DualRotorBeamDrone(BaseModel):
             v_wind_right: float = 0.0, 
             angle: float = None, 
             angular_velocity: float = None, 
-            dt: float = None): 
+            dt: float = None) -> StepResult:
         if dt is None:
             dt = self.dt
 
@@ -114,4 +122,10 @@ class DualRotorBeamDrone(BaseModel):
         self.state.angle = next_angle
         self.state.angular_velocity = next_angular_velocity
 
-        return next_angle, next_angular_velocity, angular_acc, control_mix, wind_mix
+        return StepResult(
+            next_angle=next_angle,
+            next_angular_velocity=next_angular_velocity,
+            angular_acceleration=angular_acc,
+            control_mix=control_mix,
+            wind_mix=wind_mix
+        )
