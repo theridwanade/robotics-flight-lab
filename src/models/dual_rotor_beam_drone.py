@@ -21,11 +21,11 @@ class DualRotorBeamDrone(BaseModel):
             self,
             mass: float = 1.0,
             length: float = 0.5,
+            width: float = 0.01,
             motor_base_thrust: float = 0.0,
             max_motor_thrust: float = 15.0,
             min_motor_thrust: float = 0.0,
             gravity: float = 9.81,
-            width: float = 0.01,
             drag_coefficient: float = 1.1,
             air_density: float = 1.225,
     ):
