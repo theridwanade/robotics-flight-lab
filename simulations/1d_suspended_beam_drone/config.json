@@ -1,0 +1,20 @@
+{
+    "drone": {
+        "length": 0.3,
+        "mass": 0.5,
+        "width": 0.03,
+        "motor_base_thrust": 5.0
+    },
+    "dryden": {
+        "mean_velocity": 2.5,
+        "sigma_w": 0.6,
+        "length_scale_Lw": 30.0,
+        "nominal_airspeed_V": 5.0
+    },
+    "atmosphere": {
+        "air_density": 1.225
+    },
+    "simulation": {
+        "dt": 0.01
+    }
+}
