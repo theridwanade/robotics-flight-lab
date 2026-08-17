@@ -9,7 +9,8 @@
         "mean_velocity": 2.5,
         "sigma_w": 0.6,
         "length_scale_Lw": 30.0,
-        "nominal_airspeed_V": 5.0
+        "nominal_airspeed_V": 5.0,
+        "seed": 42.0
     },
     "atmosphere": {
         "air_density": 1.225
