@@ -4,7 +4,8 @@
         "mass": 0.8,
         "width": 0.25,
         "motor_base_thrust": 15,
-        "max_motor_thrust": 50
+        "max_motor_thrust": 50,
+        "angular_damping": 0.1
     },
     "dryden": {
         "mean_velocity": 2.5,

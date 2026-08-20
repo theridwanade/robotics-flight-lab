@@ -36,6 +36,7 @@ class DualRotorBeamDrone(BaseModel):
             gravity: float = 9.81,
             drag_coefficient: float = 1.1,
             air_density: float = 1.225,
+            angular_damping: float = 0.0
     ):
         super().__init__(name="DualRotorBeamDrone", mass=mass, gravity=gravity)
 
@@ -43,7 +44,7 @@ class DualRotorBeamDrone(BaseModel):
         self.motor_base_thrust = motor_base_thrust
         self.max_motor_thrust = max_motor_thrust
         self.min_motor_thrust = min_motor_thrust
-        self.angular_damping = 0.0
+        self.angular_damping = angular_damping
 
         self.arms_length = self.length / 2.0
         # TODO: Write physics module for inertia calculation
