@@ -1,9 +1,10 @@
 {
     "drone": {
         "length": 0.3,
-        "mass": 0.5,
-        "width": 0.03,
-        "motor_base_thrust": 5.0
+        "mass": 0.8,
+        "width": 0.25,
+        "motor_base_thrust": 15,
+        "max_motor_thrust": 50
     },
     "dryden": {
         "mean_velocity": 2.5,
