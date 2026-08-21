@@ -1,11 +1,11 @@
 {
     "drone": {
-        "length": 0.3,
-        "mass": 0.8,
-        "width": 0.25,
-        "motor_base_thrust": 15,
-        "max_motor_thrust": 50,
-        "angular_damping": 0.1
+        "length": 0.45,
+        "mass": 0.4,
+        "width": 0.03,
+        "motor_base_thrust": 2.0,
+        "max_motor_thrust": 4.0,
+        "angular_damping": 0.005
     },
     "dryden": {
         "mean_velocity": 2.5,
