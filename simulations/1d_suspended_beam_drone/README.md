@@ -96,3 +96,42 @@ Explore the notebook here -> [Disturbance Rejection with PD](notebooks/single_di
     if current_time == 3.0:
         current_angle = 15.0
 ```
+
+
+## Dryden Wind
+Now its time to model a realistic stochastic wind and test how the drone stabilised manages itself in such turbulence.
+
+This is where the real work is and where things start to actually breakdown. In the real world, wind is kinda crazy like really crazy. Wind can come from any direction within a 3d space, up, down, left, right, etc or anywhere, and a physical drone has to or will naturally react to the drag.
+
+There are a lot of ways to do it, so much I can't type them all in this doc. But I choose to generate wind for two channels and apply them on each arm of the drone. You know how thats not the best idea. Why cause I could not possibly model all the physical reality for example.
+
+![wind_beam_arms](assets/wind_beam_arms.png)
+
+In my model the wind is fixed on each arm acting on there surface area and is used to calculate the wind torque - I mean the tortal torque caused by the wind force - speed.
+
+But!!!
+
+![alt text](assets/wind_escaping_beam_arms.png)
+
+In reality the wind doesn't act on all the surface area at least since the beam as a fixed surface area. Considering the beam can tilt out of angle and the wind will just escape and not all the wind will hit the surface area.
+
+I guess that should be a simple fix, maybe. But I just left it.
+
+In conclusion the wind simulation is not perfect but at least it shows something. The model can react to some sort of turbulence.
+
+![alt text](plots/dryden_wind/beam_angle_with_dryden_disturbance.png)
+
+Giving the drone model I have been using and a seed variable of 42 for the dryden wind genration. It looks promising that the drone is able to maintain a stable able of +-0.2 in the distrubance over 1o minutes of simulation.
+With the metrics below;
+
+| Metric | Value |
+| :--- | :--- |
+| **RMSE** | 0.0908 |
+| **Max Deflection** | 0.2620 |
+| **Std Deviation** | 0.0904 |
+
+This is done while using the PD constants from the ziegler-nichols closed loop tunning. 
+
+At this point everything seemes great, the model works fine, adjusted well in turbulence. GOOD
+
+Explore the notebook here -> [dryden_wind](notebooks/dryden_wind.ipynb)
