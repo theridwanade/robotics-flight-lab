@@ -86,3 +86,13 @@ I added an abrupt inteference to the current angle of the drone at a certain tim
 In the plot above a disturbance was introduced at 3 seconds and changed the angle of an already settled system from 0 deg to 15 deg. In about 4.5 seconds it settles back at the target.
 
 This gave me some really good confidence that the system is perfect - only if I had knew all along.
+
+Well, the system reacted and rejected the disturbance very well. The trajectory is very similar to that of the path to approaching the target from the initial point - just a different scale.
+
+Explore the notebook here -> [Disturbance Rejection with PD](notebooks/single_disturbance_with_pd_optimal_gain.ipynb), although nothing fancy just a simple block of code 
+
+```python
+    # This block is inside the control loop
+    if current_time == 3.0:
+        current_angle = 15.0
+```
