@@ -20,7 +20,7 @@ Building robotics project with physical hardware is expensive and prne to failur
 
 | Project | Description | Core Topics |
 | :--- | :--- | :--- |
-| **[1D Suspended Beam Drone](./simulations/1d_suspended_beam_drone/)** | Single-axis rotational drone stabilization under stochastic Dryden wind turbulence. | PID Control, Ziegler-Nichols Tuning, Aerodynamic Disturbance Modeling |
+| **[1D Suspended Beam Drone](./simulations/1d_suspended_beam_drone/README.md)** | Single-axis rotational drone stabilization under stochastic Dryden wind turbulence. | PID Control, Ziegler-Nichols Tuning, Aerodynamic Disturbance Modeling |
 
 ## Quickstart
 
