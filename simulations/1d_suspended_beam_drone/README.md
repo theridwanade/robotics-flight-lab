@@ -75,4 +75,14 @@ I didn't even knew what pessen means, and I have no reasons to pay attention cau
 Explore the notebook here -> [ziegler_nichols_pid_tunner](notebooks/ziegler_nichols_pid_tunner.ipynb)
 
 
+## Disturbance Rejection with PD Constant
 
+As I have high hopes with the PD constants, I implemented a normal configuration where the drone as to approach and settle at a target setpoint which is 0 degrees from a -25 degrees angle. This is the same flow I used in other phases of the simulation. But in this case it comes with a twist.
+
+I added an abrupt inteference to the current angle of the drone at a certain timepoint. The goal is to see how the drone with its current pd configuration rejects and handles sudden disturbance and continue to settle at its original target.
+
+![Disturbance rejection at 3 seconds](plots/disturbance_rejection_with_pd/rejection_at_3s.png)
+
+In the plot above a disturbance was introduced at 3 seconds and changed the angle of an already settled system from 0 deg to 15 deg. In about 4.5 seconds it settles back at the target.
+
+This gave me some really good confidence that the system is perfect - only if I had knew all along.
