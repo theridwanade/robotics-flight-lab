@@ -3,6 +3,8 @@
 [![Python 3.10+](https://img.shields.io/badge/python-3.10+-blue.svg)](https://www.python.org/)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
+![alt text](docs/intial.jpeg)
+
 **Robotics Flight Lab** is an opensource lab environment where I conduct experiment, answer challenging questions and test theoretical knowledge on **robotics** and **aerospace engineering**. 
 
 The goal is to experiment and learn systems behaviour, solve problem that might be encounterd in the real world and understand theoretical knowledge of robotics and aerospace right in simulations.
